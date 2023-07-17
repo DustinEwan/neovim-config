@@ -428,7 +428,12 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
-  -- rust_analyzer = {},
+  -- rust_analyzer = {
+  --     cargo = {
+  --       allFeatures = true,
+  --     },
+  -- },
+  -- rust_tools = {},
   -- tsserver = {},
 
   lua_ls = {
