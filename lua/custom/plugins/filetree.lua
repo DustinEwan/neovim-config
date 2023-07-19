@@ -12,4 +12,8 @@ return {
   config = function ()
     require('neo-tree').setup {}
   end,
+  keys = {
+    {'\\', '<cmd>Neotree toggle current reveal_force_cwd left<cr>', desc = 'Toggle NeoTree open/close' },
+    {'|', '<cmd>Neotree reveal<cr>', desc = 'Reveal the current buffer in NeoTree' },
+  }
 }
