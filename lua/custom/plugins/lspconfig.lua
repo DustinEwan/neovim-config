@@ -1,3 +1,14 @@
+local function organize_imports()
+
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+
 return {
     {
         'nvimdev/lspsaga.nvim',
@@ -11,6 +22,7 @@ return {
         keys = {
             {'K', '<cmd>Lspsaga hover_doc<cr>', desc = 'LSPSaga Hover Documentation'},
             {'<leader>ca', '<cmd>Lspsaga code_action<cr>', desc = 'LSPSaga [C]ode [A]ctions'},
+            {'goi', organize_imports, desc = '[O]rganize [I]mports'},
         },
         build = ':TSInstall markdown markdown_inline',
         dependencies = {

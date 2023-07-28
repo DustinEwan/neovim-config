@@ -2,6 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+vim.cmd('set relativenumber')
+vim.cmd('let &stc=\'%s %=%(%l%) %=%(%r%) \'')
+
 return {
     {
         "simrat39/rust-tools.nvim",
