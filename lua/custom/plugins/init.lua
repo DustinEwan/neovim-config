@@ -6,9 +6,6 @@ vim.cmd('set relativenumber')
 vim.cmd('let &stc=\'%s %=%(%l%) %=%(%r%) \'')
 
 return {
-    {
-        "simrat39/rust-tools.nvim",
-    },
     'nvim-lua/plenary.nvim',
     'mfussenegger/nvim-dap',
     'theprimeagen/harpoon',
@@ -17,7 +14,7 @@ return {
         name = 'rose-pine',
         lazy = false,
         config = function()
-            vim.cmd('colorscheme rose-pine-moon')
+            vim.cmd('colorscheme rose-pine')
         end
     }
 }

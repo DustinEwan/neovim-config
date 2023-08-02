@@ -1,15 +1,53 @@
 local function organize_imports()
-
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
+    local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+        title = ""
+    }
+    vim.lsp.buf.execute_command(params)
 end
 
 
 return {
+    {
+        'rust-lang/rust.vim',
+        ft = 'rust',
+        init = function()
+            vim.g.rustfmt_autosave = 1
+        end
+    },
+    {
+        'simrat39/rust-tools.nvim',
+        ft = 'rust',
+        opts = {
+            server = {
+                settings = {
+                    ["rust-analyzer"] = {
+                        cargo = {
+                            allFeatures = true,
+                        },
+                        assist = {
+                            importEnforceGranularity = true,
+                            importPrefix = 'crate',
+                        },
+                        checkOnSave = {
+                            command = 'clippy',
+                        },
+                        -- inlayHints = { locationLinks = false },
+                        diagnostics = {
+                            enable = true,
+                            experimental = {
+                                enable = true,
+                            },
+                        },
+                    }
+                }
+            }
+        },
+        dependencies = {
+            'neovim/nvim-lspconfig',
+        },
+    },
     {
         'nvimdev/lspsaga.nvim',
         config = function()
@@ -20,9 +58,9 @@ return {
             })
         end,
         keys = {
-            {'K', '<cmd>Lspsaga hover_doc<cr>', desc = 'LSPSaga Hover Documentation'},
-            {'<leader>ca', '<cmd>Lspsaga code_action<cr>', desc = 'LSPSaga [C]ode [A]ctions'},
-            {'goi', organize_imports, desc = '[O]rganize [I]mports'},
+            { 'K',          '<cmd>Lspsaga hover_doc<cr>',   desc = 'LSPSaga Hover Documentation' },
+            { '<leader>ca', '<cmd>Lspsaga code_action<cr>', desc = 'LSPSaga [C]ode [A]ctions' },
+            { 'goi',        organize_imports,               desc = '[O]rganize [I]mports' },
         },
         build = ':TSInstall markdown markdown_inline',
         dependencies = {
