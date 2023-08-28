@@ -8,6 +8,7 @@ vim.cmd('let &stc=\'%s %=%(%l%) %=%(%r%) \'')
 return {
     'nvim-lua/plenary.nvim',
     'mfussenegger/nvim-dap',
+    'christoomey/vim-tmux-navigator',
     'theprimeagen/harpoon',
     {
         'rose-pine/neovim',

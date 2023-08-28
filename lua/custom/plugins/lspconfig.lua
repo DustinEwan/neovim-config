@@ -16,6 +16,7 @@ return {
             vim.g.rustfmt_autosave = 1
         end
     },
+    'qnighy/lalrpop.vim',
     {
         'simrat39/rust-tools.nvim',
         ft = 'rust',
