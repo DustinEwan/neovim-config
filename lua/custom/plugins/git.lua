@@ -1,5 +1,19 @@
+Execute = function(cmd)
+  local handle = io.popen(cmd)
+
+  if handle == nil then
+    return nil
+  end
+
+  local result = handle:read("*a")
+
+  handle:close()
+
+  return result
+end
+
 GitPushAutoUpstream = function()
-  local branch = vim.api.nvim_command("!git branch --show-current")
+  local branch = Execute("git branch --show-current")
   local push_cmd = "git push --set-upstream origin " .. branch
   local conf_message = "Are you sure you want to execute\n" .. push_cmd
   vim.ui.select({ "Yes", "No" }, { prompt = conf_message }, function(choice)
