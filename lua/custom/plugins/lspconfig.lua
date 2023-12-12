@@ -17,6 +17,7 @@ return {
             vim.g.rustfmt_autosave = 1
         end
     },
+    'qnighy/lalrpop.vim',
     {
         'simrat39/rust-tools.nvim',
         ft = 'rust',
@@ -61,7 +62,7 @@ return {
         keys = {
             { 'K',          '<cmd>Lspsaga hover_doc<cr>',   desc = 'LSPSaga Hover Documentation' },
             { '<leader>ca', '<cmd>Lspsaga code_action<cr>', desc = 'LSPSaga [C]ode [A]ctions' },
-            { 'goi',        organize_imports,               desc = '[O]rganize [I]mports' },
+            { '<leader>oi',        organize_imports,               desc = '[O]rganize [I]mports' },
         },
         build = ':TSInstall markdown markdown_inline',
         dependencies = {
@@ -105,5 +106,16 @@ return {
                 end,
             })
         end
+    },
+    {
+        "danymat/neogen",
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+        },
+        config = true,
+        event = "LspAttach",
+        keys = {
+            { '<leader>cd',         function () require('neogen').generate() end,               desc = '[C]ode [D]ocgen' },
+        },
     }
 }
