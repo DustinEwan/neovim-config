@@ -9,6 +9,7 @@ end
 
 
 return {
+    'pest-parser/pest.vim',
     {
         'rust-lang/rust.vim',
         ft = 'rust',
