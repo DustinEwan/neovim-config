@@ -9,6 +9,7 @@ end
 
 
 return {
+    'github/copilot.vim',
     'pest-parser/pest.vim',
     {
         'rust-lang/rust.vim',
